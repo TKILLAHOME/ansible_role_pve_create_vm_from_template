@@ -1,8 +1,0 @@
----
-
-- name: Change CPU Configuration
-  hosts: all
-  gather_facts: false
-  
-  roles: 
-    - rl_vm_cpu_configuration

@@ -1,0 +1,19 @@
+---
+# tasks file for rl_pve_create_vm_from_template
+
+- name: Clone Template and Apply Cloud-Init Config
+  community.general.proxmox_kvm:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_user }}"
+    api_password: "{{ pve_password }}"
+    node: "{{ pve_node }}"
+    clone: "{{ vm_template }}"
+    name: "{{ vm_name }}"
+    newid: "{{ vm_id }}"
+    timeout: 300
+    ciuser: "{{ vm_user }}"
+    sshkeys: "{{ vm_ssh_key }}"
+    ipconfig0: "ip={{ vm_ip }},gw={{ vm_gw }}"
+    nameservers: "8.8.8.8 1.1.1.1"
+    searchdomains: "localdomain"
+    state: started
